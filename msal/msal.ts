@@ -30,11 +30,11 @@ export async function getToken() {
 
 export const handleLogin = (loginType = "redirect") => {
   if (loginType === "popup") {
-    msalInstance.loginPopup(loginRequest).catch((e) => {
+    msalInstance.loginPopup({ scopes: loginRequest.scopes.filter((scope) => scope !== undefined) }).catch((e) => {
       console.error(`loginPopup failed: ${e}`);
     });
   } else if (loginType === "redirect") {
-    msalInstance.loginRedirect(loginRequest).catch((e) => {
+    msalInstance.loginRedirect({ scopes: loginRequest.scopes.filter((scope) => scope !== undefined) }).catch((e) => {
       console.error(`loginRedirect failed: ${e}`);
     });
   }
