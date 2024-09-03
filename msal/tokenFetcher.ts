@@ -1,5 +1,5 @@
-import { PublicClientApplication } from "@azure/msal-browser";
-import { API_SCOPE } from "@/msal/authConfig";
+import { loginRequest } from "@/msal/authConfig";
+import { PublicClientApplication, SilentRequest } from "@azure/msal-browser";
 
 export async function getCurrentToken(msalInstance: PublicClientApplication): Promise<string | null> {
     const acquireAccessToken = async () => {
@@ -13,8 +13,8 @@ export async function getCurrentToken(msalInstance: PublicClientApplication): Pr
             */
             return null;
         }
-        const request = {
-            scopes: [API_SCOPE],
+        const request: SilentRequest = {
+            scopes: loginRequest.scopes as string[],
             account: activeAccount || accounts[0]
         };
 
