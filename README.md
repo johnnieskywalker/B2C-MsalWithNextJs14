@@ -56,3 +56,22 @@ I had the same struggle as you do do when I first started using MSAL for custom 
 Happy coding!💻
 
 [Mazen Alsenih](https://mazensenih.com)
+
+## B2C Fork
+This is a B2C fork that was configured using this sample: [https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/samples/msal-react-samples/b2c-sample/src/authConfig.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/samples/msal-react-samples/b2c-sample/src/authConfig.js).
+
+It needed a bit more tinkering, but hopefully, this will be useful. All the prerequisites need to be configured from this link: [https://learn.microsoft.com/en-us/azure/active-directory-b2c/tutorial-create-tenant](https://learn.microsoft.com/en-us/azure/active-directory-b2c/tutorial-create-tenant).
+Note in this example some environment variables are used, so you need to create a `.env.local` file in the root of the project and add the following:
+
+```bash
+NEXT_PUBLIC_USER_CLAIMS_ADMIN=
+NEXT_PUBLIC_SIGNUP_POLICY_NAME=
+NEXT_PUBLIC_EDIT_PROFILE_POLICY_NAME=
+NEXT_PUBLIC_COMPANY_B2C_LOGIN_URL=
+NEXT_PUBLIC_AUTHORITY_DOMAIN=
+NEXT_PUBLIC_LOGIN_REQUEST_URL=
+NEXT_PUBLIC_API_CONFIG_URL=
+NEXT_PUBLIC_B2C_CLIENT_ID=
+```
+
+Keep in mind that variables prefixed with `NEXT_PUBLIC_` are used in the frontend, and the rest are used in the backend. For better security consider moving some of variables to backend only. This is just a sample to get you started.
